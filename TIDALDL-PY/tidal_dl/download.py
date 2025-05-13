@@ -10,10 +10,14 @@
 '''
 
 from concurrent.futures import ThreadPoolExecutor
+import time
+import random
 
 from decryption import *
 from printf import *
+from settings import SETTINGS
 from tidal import *
+
 
 
 def __isSkip__(finalpath, url):

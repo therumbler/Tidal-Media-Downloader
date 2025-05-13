@@ -154,11 +154,12 @@ def downloadTrack(track: Track, album=None, playlist=None, userProgress=None, pa
             Printf.success(aigpy.path.getFileName(path) + " (skip:already exists!)")
             return True, ''
 
-        # random sleep between 0.5 and 5 seconds and print it
-        sleep_time = random.randint(500, 5000) / 1000
-        print(
-            f"Sleeping for {sleep_time} seconds, to mimic human behaviour and prevent too many requests error")
-        time.sleep(sleep_time)
+        if SETTINGS.downloadDelay is not False:
+            # random sleep between 0.5 and 5 seconds and print it
+            sleep_time = random.randint(500, 5000) / 1000
+            print(
+                f"Sleeping for {sleep_time} seconds, to mimic human behaviour and prevent too many requests error")
+            time.sleep(sleep_time)
         
         # download
         logging.info("[DL Track] name=" + aigpy.path.getFileName(path) + "\nurl=" + stream.url)
